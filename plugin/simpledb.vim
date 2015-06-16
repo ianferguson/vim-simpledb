@@ -34,8 +34,12 @@ function! simpledb#ExecuteSql() range
   let conprops = substitute(conprops, "db:\\w\\+", "", "")
   let query = s:GetQuery(a:firstline, a:lastline)
 
-  if len(adapter) > 1 && adapter[1] == 'mysql'
-    let cmdline = s:MySQLCommand(conprops, query)
+  if len(adapter) > 1
+    if adapter[1] == 'mysql'
+      let cmdline = s:MySQLCommand(conprops, query)
+    elseif adapter[1] == 'vertica'
+      let cmdline = s:VerticaCommand(conprops,query)
+    endif
   else
     let cmdline = s:PostgresCommand(conprops, query)
   endif
@@ -62,6 +66,18 @@ function! s:PostgresCommand(conprops, query)
 
   let sql_text = escape(sql_text, '%')
   let cmdline = 'echo -e ' . sql_text . '| psql ' . a:conprops
+  return cmdline
+endfunction
+
+function! s:VerticaCommand(conprops, query)
+  if g:simpledb_show_timing == 1
+    let sql_text = shellescape('\\timing on \\\ ' . a:query)
+  else
+    let sql_text = shellescape(a:query)
+  end
+
+  let sql_text = escape(sql_text, '%')
+  let cmdline = 'echo -e ' . sql_text . '| vsql ' . a:conprops
   return cmdline
 endfunction
 

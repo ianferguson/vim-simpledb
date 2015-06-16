@@ -1,6 +1,6 @@
 # vim-simpledb
 
-Vim plugin to execute postgresql or mysql commands from VIM buffer
+Vim plugin to execute postgresql, vertica or mysql commands from VIM buffer, forked from http://github.com/ivalkeen/vim-simpledb
 
 ## Installation
 
@@ -8,17 +8,17 @@ Vim plugin to execute postgresql or mysql commands from VIM buffer
 
 If you use git submodules, run this command from your .vim folder:
 
-    git submodule add https://github.com/ivalkeen/vim-simpledb bundle/simpledb
+    git submodule add https://github.com/ianferguson/vim-simpledb bundle/simpledb
 
 Otherwise, , run this command from your .vim folder:
 
-    git clone https://github.com/ivalkeen/vim-simpledb bundle/simpledb
+    git clone https://github.com/ianferguson/vim-simpledb bundle/simpledb
 
 ### Vundle
 
 Add this line to your vimrc
 
-    Bundle 'ivalkeen/vim-simpledb'
+    Bundle 'ianferguson/vim-simpledb'
 
 ## Usage
 
@@ -31,6 +31,10 @@ Default key mapping for execution: `<enter>`.
     for psql:
 
     `-- -h localhost -U postgres -d my_database`
+
+    or for vertica:
+
+    `-- db:vertica -U vertica -d my_database` 
 
     or for mysql:
 
@@ -72,7 +76,7 @@ If you have any questions, [mail me](mailto:itkalin@gmail.com)
 
 ## Self-Promotion
 
-If you like this project, please follow the repository on [GitHub](https://github.com/ivalkeen/vim-simpledb). Also, you might consider visiting my [blog](http://www.tkalin.com) and following me on [Twitter](https://twitter.com/ivalkeen) and [Github](https://github.com/ivalkeen).
+If you like this project, please follow the repository on [GitHub](https://github.com/ianferguson/vim-simpledb). Also, you might consider visiting my [blog](http://www.tkalin.com) and following me on [Twitter](https://twitter.com/ianferguson) and [Github](https://github.com/ianferguson).
 
 
 [1]: http://i.imgur.com/1UrMOpd.png
