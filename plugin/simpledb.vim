@@ -70,12 +70,7 @@ function! s:PostgresCommand(conprops, query)
 endfunction
 
 function! s:VerticaCommand(conprops, query)
-  if g:simpledb_show_timing == 1
-    let sql_text = shellescape('\\timing on \\\ ' . a:query)
-  else
-    let sql_text = shellescape(a:query)
-  end
-
+  let sql_text = shellescape(a:query)
   let sql_text = escape(sql_text, '%')
   let cmdline = 'echo -e ' . sql_text . '| vsql ' . a:conprops
   return cmdline
